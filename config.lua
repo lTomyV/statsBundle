@@ -8,4 +8,4 @@ Config = {}
 ]]
 Config.testingCommands = true
 
-Config.discordWebhook = "https://discord.com/api/webhooks/1136813686770630697/PpZrqNG0ki34cEQFx_mAxO8KTSdKlH6gFzWeYnWas8OMHjtAqyO4jI_OHflfBfPcsPBd"
+Config.discordWebhook = "https://discord.com/api/webhooks/1136813686770630697/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
