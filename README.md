@@ -1,4 +1,4 @@
 QBCore Framework
-Save player: Playtime - Kills - Deaths
+Stat track characters Playtime, Kills and Deaths
 
-https://youtu.be/LUQLyotfAPI
+Preview: https://youtu.be/LUQLyotfAPI
