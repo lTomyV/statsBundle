@@ -14,7 +14,7 @@ AddEventHandler("gameEventTriggered", function(name, args)
 	if (victimId == 0) then return end
 
 	QBCore.Functions.TriggerCallback("vectorSystems:generateToken", function(token)
-		TriggerServerEvent("vectorSystems:registerKillDeath", killerId, victimId, token)
+		TriggerServerEvent("statsBundle:registerKillDeath", killerId, victimId, token)
 	end)
 
 end)

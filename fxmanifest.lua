@@ -12,15 +12,14 @@ server_scripts {
     'utils/vectorTokenValidator_QB.lua',
     'utils/vectorDiscordWebhook.lua',
     'server/killTracker.lua',
-    'server/playTimeTracker.lua'
+    'server/playTimeTracker.lua',
+    'server/levelingSystem.lua'
 }
 client_scripts {
     'client/killTracker.lua'
 }
 
 escrow_ignore {
-    'client/*',
-    'server/*',
     'SQL/*',
     'config.lua'
 }

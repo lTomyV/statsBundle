@@ -3,7 +3,6 @@ local QBCore = exports['qb-core']:GetCoreObject()
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(300000)
-        print("Adding playtime")
 
         local citizenIDs = {}
 
@@ -31,4 +30,22 @@ Citizen.CreateThread(function()
         end)
         
     end
+end)
+
+--================================================================================================
+--========================================= CALLBACKS ============================================
+--================================================================================================
+QBCore.Functions.CreateCallback('statsBundle:GetPlayTime', function(source, cb)
+    local PlayerId = QBCore.Functions.GetPlayer(source).PlayerData.citizenid
+    MySQL.Async.fetchAll(
+        'SELECT play_time FROM players WHERE citizenid = @citizenid',
+        {['@citizenid'] = PlayerId},
+        function(result)
+            if result[1] then
+                cb(result[1].play_time)
+            else
+                cb(0)
+            end
+        end
+    )
 end)
