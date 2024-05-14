@@ -6,6 +6,6 @@ Config = {}
     - /add_d => Añade una muerte al jugador que lo ejecuta
     - /add_h => Añade una hora de juego al jugador que lo ejecuta
 ]]
-Config.testingCommands = true
+Config.testingCommands = false
 
 Config.discordWebhook = "https://discord.com/api/webhooks/1136813686770630697/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
