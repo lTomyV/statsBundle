@@ -66,14 +66,20 @@ end
 --================================================================================================
 QBCore.Functions.CreateCallback('statsBundle:GetLevel', function(source, cb)
     local PlayerId = QBCore.Functions.GetPlayer(source).PlayerData.citizenid
-    local xp = getXp(PlayerId)
+    local xpL = getXp(PlayerId)
+    local attempts = 0
 
-    if xp ~= nil then
-        local level, progress = calculateLevelAndProgress(xp)
-        local readyCB = {xp = xp, level = level, progress = progress}
+    while xpL == nil and attempts < 5 do
+        Citizen.Wait(1000)
+        xpL = getXp(PlayerId)
+        attempts = attempts + 1
+    end
+
+    if xpL ~= nil then
+        local levelL, progressL = calculateLevelAndProgress(xpL)
+        local readyCB = {xp = xpL, level = levelL, progress = progressL}
         cb(readyCB)
     else
-        -- Notify the source using qbnotify
         QBCore.Functions.Notify("No se pudo obtener el nivel", "error")
     end
 end)
