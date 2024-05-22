@@ -1,8 +1,10 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+local minutes = 5
+
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(300000)
+        Citizen.Wait(1000 * 60 * minutes)
 
         local citizenIDs = {}
 
@@ -21,6 +23,14 @@ Citizen.CreateThread(function()
         
         local query = 'UPDATE players SET play_time = play_time + 5 WHERE citizenid IN (' .. table.concat(quotedIDs, ', ') .. ');'
         
+        -- If theres no one online print on the console that the query was not executed because no one was online
+        if #citizenIDs == 0 then
+            if Config.consoleDebug then
+                print("No one online, query not executed")
+            end
+            return
+        end
+
         MySQL.Async.execute(query, {}, function(affectedRows)
             if affectedRows < 1 then
                 -- No one changed, ERROR or No one online
@@ -28,7 +38,6 @@ Citizen.CreateThread(function()
                 -- Playtime added, success
             end
         end)
-        
     end
 end)
 
