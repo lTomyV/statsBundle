@@ -28,7 +28,6 @@ Citizen.CreateThread(function()
             if Config.consoleDebug then
                 print("No one online, query not executed")
             end
-            return
         end
 
         MySQL.Async.execute(query, {}, function(affectedRows)
